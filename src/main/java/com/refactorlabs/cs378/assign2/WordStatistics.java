@@ -209,6 +209,8 @@ public class WordStatistics {
 				mean += arrayValues[1];
 				variance += arrayValues[2];
 			}
+			
+			// Appropriate calculations to compute mean and variance.
 			mean /= count;
 			variance /= count;
 			variance -= (mean * mean);
@@ -225,7 +227,7 @@ public class WordStatistics {
 		Configuration conf = new Configuration();
 		String[] appArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 
-		Job job = new Job(conf, "MultipleStatistics");
+		Job job = new Job(conf, "WordStatistics");
 		// Identify the JAR file to replicate to all machines.
 		job.setJarByClass(WordStatistics.class);
 		
@@ -236,7 +238,7 @@ public class WordStatistics {
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(LongArrayWritable.class);
 		
-		// Set the map and reduce classes.
+		// Set the map, combiner and reduce classes.
 		job.setMapperClass(MapClass.class);
 		job.setCombinerClass(CombinerClass.class);
 		job.setReducerClass(ReduceClass.class);

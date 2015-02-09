@@ -53,6 +53,10 @@ public class DoubleArrayWritable extends ArrayWritable implements WritableCompar
 		return strBuilder.toString();
 	}
 	
+	/**
+	 * If number of values in the long array are equal and
+	 * difference in each value is less than .0001 then return true, else false.
+	 */
 	public boolean equals(Object obj) {
 		DoubleArrayWritable other = (DoubleArrayWritable) obj;
 		Writable[] otherWValues = other.get();
@@ -72,7 +76,13 @@ public class DoubleArrayWritable extends ArrayWritable implements WritableCompar
 	}
 
 	@Override
-	// Coming from WritableComparable interface.
+	/*
+	 * Coming from WritableComparable interface. Returning 0
+	 * if the objects are same, otherwise returning some random
+	 * value, i.e 1 here.(non-Javadoc)
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
 		if (this.equals(arg0)) {

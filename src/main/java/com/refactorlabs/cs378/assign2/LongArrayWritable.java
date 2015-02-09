@@ -53,6 +53,10 @@ public class LongArrayWritable extends ArrayWritable implements WritableComparab
 		return strBuilder.toString();
 	}
 	
+	/**
+	 * If number of values in the long array are equal and
+	 * every value is same then return true, else false.
+	 */
 	public boolean equals(Object obj) {
 		LongArrayWritable other = (LongArrayWritable) obj;
 		Writable[] otherWValues = other.get();
@@ -73,7 +77,13 @@ public class LongArrayWritable extends ArrayWritable implements WritableComparab
 	}
 
 	@Override
-	// Coming from WritableComparable interface.
+	/* 
+	 * Coming from WritableComparable interface. Returning 0
+	 * if the objects are same, otherwise returning some random
+	 * value, i.e 1 here.
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
 		if (this.equals(arg0)) {

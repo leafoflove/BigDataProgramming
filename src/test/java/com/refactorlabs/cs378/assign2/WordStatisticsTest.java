@@ -67,13 +67,13 @@ public class WordStatisticsTest {
 		reduceDriver.withInput(new Text(TEST_WORD), valueList);
 		
 		DoubleArrayWritable doubleArrayWritable1 = new DoubleArrayWritable();
-		doubleArrayWritable1.setValueArray(new double[] {3, 0.6667});
+		doubleArrayWritable1.setValueArray(new double[] {3, 3, 0.6667});
 		reduceDriver.withOutput(new Text(TEST_WORD), doubleArrayWritable1);
 	
-//		try {
-//			//reduceDriver.runTest();
-//		} catch (IOException ioe) {
-//			Assert.fail("IOException from mapper: " + ioe.getMessage());
-//		}
+		try {
+			reduceDriver.runTest();
+		} catch (IOException ioe) {
+			Assert.fail("IOException from mapper: " + ioe.getMessage());
+		}
 	}
 }
