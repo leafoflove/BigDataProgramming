@@ -20,17 +20,12 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 /**
- * Tasks to be done in this homework
- * 
- * 1) Check out the dataset2 and check the kind of punctuation present in the data.
- * 2) Write the skeleton for the mapper, combiner and then reducer.
- * 3) Also parallely write the tester classes.
+ * Tasks to be done in this homework.
  * 
  * @author Gaurav Nanda (nanda@utexas.edu)
- *
  */
 
-public class MultipleStatistics {
+public class WordStatistics {
 	
 	public static class MapClass extends Mapper<LongWritable, Text, Text, LongArrayWritable> {
 		/**
@@ -39,11 +34,11 @@ public class MultipleStatistics {
 		private static final String MAPPER_COUNTER_GROUP = "Mapper Counts";
 		
 		/**
-		 * Create a private HashMap<Text, Count>, so that we dont have to
+		 * Create a private HashMap<String, Count>, so that we dont have to
 		 * create the hash object on every map() invocation.
 		 */
-		private static final HashMap<Text, Long> wordCountMap = 
-				new HashMap<Text, Long>();
+		private static final HashMap<String, Long> wordCountMap = 
+				new HashMap<String, Long>();
 		
 		/**
 		 * Create one LongWritable object that could be reused.
@@ -51,14 +46,7 @@ public class MultipleStatistics {
 		private static final LongArrayWritable longArrayWritable =
 				new LongArrayWritable();
 		
-		/**
-		 * Local variable "word" will contain the word identified in the input.
-		 * The Hadoop Text object is mutable, so we can reuse the same object and
-		 * simply reset its value as each word in the input is encountered.
-		 */
-		private Text word = new Text();
-		
-		private List<Character> punctuations = Arrays.asList('-', '_', '\"', ',', ';', ':');
+		private List<Character> punctuations = Arrays.asList('-', '_', '\"', ',', ';', ':', '\'', '.');
 		
 		@Override
 		public void map(LongWritable mapKey, Text value, Context context)
@@ -68,7 +56,7 @@ public class MultipleStatistics {
 			String line = value.toString();
 			
 			// Tokenize the paragraph.
-			StringTokenizer tokenizer = new StringTokenizer(line);
+			StringTokenizer tokenizer = new StringTokenizer(line, "=_\";:.,?[ ");
 			
 			// Count the number of paragraphs.
 			context.getCounter(MAPPER_COUNTER_GROUP, "Input Lines").increment(1L);
@@ -80,6 +68,8 @@ public class MultipleStatistics {
 			// in the respective paragraph.
 			while(tokenizer.hasMoreTokens()) {
 				StringBuilder token = new StringBuilder(tokenizer.nextToken().toLowerCase());
+				
+				System.out.println(token);
 				
 				// Some code to strip off the words.
 				boolean anyChange = true;
@@ -96,7 +86,14 @@ public class MultipleStatistics {
 						anyChange = true;
 					}
 				}
-				word.set(token.toString());
+				if (token.length() == 0) {
+					continue;
+				}
+			
+				if (token.charAt(token.length() - 1) == ']') {
+					token.insert(0, '[');
+				}
+				String word = token.toString();
 				
 				// Fill the word count map. If it is the first 
 				// occurrence, then set the count to be 1, otherwise
@@ -108,12 +105,12 @@ public class MultipleStatistics {
 				}
 			}
 			
-			for (Text key : wordCountMap.keySet()) {
+			for (String key : wordCountMap.keySet()) {
 				long count = wordCountMap.get(key);
 				long squareCount = count * count;
 				
 				longArrayWritable.setValueArray(new long[] {1L, count, squareCount});
-				context.write(key, longArrayWritable);
+				context.write(new Text(key), longArrayWritable);
 				context.getCounter(MAPPER_COUNTER_GROUP, "Words Out").increment(1L);
 			}
 		}
@@ -172,7 +169,7 @@ public class MultipleStatistics {
 
 			// Sum up the counts for the current word, specified in object "key".
 			long count = 0L;
-			long mean = 0L;
+			double mean = 0L;
 			double variance = 0;
 			for (LongArrayWritable value : values) {
 				long[] arrayValues = value.getValueArray();
@@ -186,8 +183,8 @@ public class MultipleStatistics {
 			
 			// Emit the double array for each word.
 			DoubleArrayWritable doubleArrayWritable1 = new DoubleArrayWritable();
-			doubleArrayWritable1.setValueArray(new double[] {mean, variance});
-			System.out.println(doubleArrayWritable1);
+			doubleArrayWritable1.setValueArray(new double[] {count, mean, variance});
+			//System.out.println(doubleArrayWritable1);
 			context.write(key, doubleArrayWritable1);
 		}
 	}
@@ -198,7 +195,7 @@ public class MultipleStatistics {
 
 		Job job = new Job(conf, "MultipleStatistics");
 		// Identify the JAR file to replicate to all machines.
-		job.setJarByClass(MultipleStatistics.class);
+		job.setJarByClass(WordStatistics.class);
 		
 		// Set the output key and value types (for map and reduce).
 		job.setOutputKeyClass(Text.class);

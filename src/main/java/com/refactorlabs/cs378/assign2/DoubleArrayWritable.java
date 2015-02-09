@@ -45,7 +45,7 @@ public class DoubleArrayWritable extends ArrayWritable implements WritableCompar
 		StringBuilder breaker = new StringBuilder();
 		for (int i=0; i < values.length; ++i) {
 			strBuilder.append(breaker);
-			strBuilder.append(String.format("%.2f", values[i]));
+			strBuilder.append(String.format("%.4f", values[i]));
 			breaker.setLength(1);
 			breaker.setCharAt(0, ',');
 		}
@@ -64,10 +64,10 @@ public class DoubleArrayWritable extends ArrayWritable implements WritableCompar
 		
 		for (int i=0; i < thisWValues.length; ++i) {
 			if ( ((DoubleWritable)otherWValues[i]).get() - 
-					((DoubleWritable)thisWValues[i]).get() > .01) {
+					((DoubleWritable)thisWValues[i]).get() > .0001) {
 				return false;
 			}
-		}
+		}	
 		return true;
 	}
 
