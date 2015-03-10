@@ -1,0 +1,16 @@
+{"namespace": "com.refactorlabs.cs378.assign5",
+  "type": "record",
+  "name": "AvroStringField",
+  "fields": [
+      {"name": "string_field", "type": "string"},
+
+      {"name": "string_union_null_field", "type": [ "string", "null" ]},
+
+      {"name": "string_union_null_with_default_field",
+       "type": [ "string", "null" ], "default": "xyz"},
+
+      {"name": "null_union_string_with_default_field",
+       "type": [ "null", "string" ], "default": null}
+  ]
+}
+

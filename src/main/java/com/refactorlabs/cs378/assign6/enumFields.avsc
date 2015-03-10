@@ -1,0 +1,47 @@
+{"namespace": "com.refactorlabs.cs378.assign5",
+   "type": "record",
+   "name": "AvroEnumField",
+   "fields": [
+      {"name": "enum_fieldA1", "type": {"type": "enum",
+                                        "name": "EnumA",
+                                        "symbols": [ "A1", "A2", "A3" ]
+                                       }
+      },
+
+      {"name": "enum_fieldA2", "type": [ "EnumA", "null" ] },
+
+      {"name": "enum_fieldA3", "type": [ "EnumA", "null" ], "default": "A3" },
+
+      {"name": "enum_fieldA4", "type": [ "null", "EnumA" ], "default": null },
+
+      {"name": "enum_fieldB", "type": {"type": "enum",
+                                       "name": "EnumB",
+                                       "symbols": [ "B1", "B2", "B3" ]
+                                      },
+                              "default": "B2"
+      },
+
+      {"name": "enum_fieldC", "type": [{"type": "enum",
+                                        "name": "EnumC",
+                                        "symbols": [ "C1", "C2", "C3" ]
+                                        },
+                                        "null"]
+      },
+
+      {"name": "enum_fieldD", "type": [{"type": "enum",
+                                        "name": "EnumD",
+                                        "symbols": [ "D1", "D2", "D3" ]
+                                        },
+                                        "null"],
+                              "default": "D1"
+      },
+
+      {"name": "enum_fieldE", "type": ["null",
+                                       {"type": "enum",
+                                        "name": "EnumE",
+                                        "symbols": [ "E1", "E2", "E3" ]
+                                       }],
+                              "default": null
+             }
+   ]
+ }

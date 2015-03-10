@@ -1,0 +1,65 @@
+{"namespace": "com.refactorlabs.cs378.sessions",
+ "type": "record",
+ "name": "Session",
+ "fields": [
+      {"name": "user_id", "type": "string"},
+      {"name": "events",
+       "type": {"type": "array",
+                "items": {"type": "record",
+                          "name": "Event",
+                          "fields": [
+                              {"name": "event_type",
+                               "type": {"type": "enum",
+                                        "name": "EventType",
+                                        "symbols": [ "CHANGE", "CLICK", "CONTACT_FORM_STATUS",
+                                                     "EDIT", "SHARE", "SHOW", "SUBMIT", "VISIT" ]
+                                       }
+                               },
+                              {"name": "event_subtype",
+                               "type": ["null", {"type": "enum", "name": "EventSubtype",
+                                        "symbols": ["CONTACT_FORM_TYPE",  "ALTERNATIVE",  "CONTACT_BANNER",  
+                                        "CONTACT_BUTTON",  "MARKET_REPORT",  "DEALER_PHONE",  "FEATURES_SECTION",  
+                                        "GET_DIRECTIONS",  "SHOW_MORE_BADGES",  "TEST_DRIVE_LINK",  
+                                        "VEHICLE_HISTORY_REPORT_LINK",  "ERROR",  "SUCCESS",  "CONTACT_FORM",  
+                                        "BADGE_DETAIL",  "PHOTO_MODAL",  "ALTERNATIVES",  "BADGES",  
+                                        "FEATURES",  "VEHICLE_HISTORY",  "MARKET_REPORT_LISTING"]
+                                       }],
+                               "default": null
+                              },
+                              {"name": "body_style", "type": "string" , "default" : ""},
+                              {"name": "cab_style", "type": "string" , "default" : ""},
+                              {"name": "carfax_one_owner", "type": "string" , "default" : ""},
+                              {"name": "city", "type": "string" , "default" : ""},
+                              {"name": "drive_type", "type": "string" , "default" : ""},
+                              {"name": "engine", "type": "string" , "default" : ""},
+                              {"name": "engine_displacement", "type": "string" , "default" : ""},
+                              {"name": "exterior_color", "type": "string" , "default" : ""},
+                              {"name": "features", "type" : {"type"  : "array", "items" : "string"}},
+                              {"name": "fuel", "type": "string" , "default" : ""},
+                              {"name": "initial_carfax_free_report", "type": "string" , "default" : ""},
+                              {"name": "initial_cpo", "type": "string" , "default" : ""},
+                              {"name": "interior_color", "type": "string" , "default" : ""},
+                              {"name": "make", "type": "string" , "default" : ""},
+                              {"name": "model", "type": "string" , "default" : ""},
+                              {"name": "mpg", "type": "string" , "default" : ""},
+                              {"name": "page", "type": "string" , "default" : ""},
+                              {"name": "referring_domain", "type": "string" , "default" : ""},
+                              {"name": "region", "type": "string" , "default" : ""},
+                              {"name": "subtrim", "type": "string" , "default" : ""},
+                              {"name": "transmission", "type": "string" , "default" : ""},
+                              {"name": "trim", "type": "string" , "default" : ""},
+                              {"name": "vehicle_condition", "type": "string" , "default" : ""},
+                              {"name": "year", "type": "string" , "default" : ""},
+                              {"name": "event_timestamp", "type": "string" , "default" : ""},
+                              {"name": "image_count", "type": "string" , "default" : ""},
+                              {"name": "initial_price", "type": "string" , "default" : ""},
+                              {"name": "mileage", "type": "string" , "default" : ""},
+                              {"name": "referrer", "type": "string" , "default" : ""},
+                              {"name": "vin", "type": "string", "default" : ""}
+                              ]
+                          }
+                }
+       }
+   ]
+ }
+
