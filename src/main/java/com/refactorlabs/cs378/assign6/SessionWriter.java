@@ -16,6 +16,7 @@ import org.apache.avro.mapred.AvroValue;
 import org.apache.avro.mapred.AvroWrapper;
 import org.apache.avro.mapred.Pair;
 import org.apache.avro.mapreduce.AvroJob;
+import org.apache.avro.mapreduce.AvroKeyValueOutputFormat;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -126,7 +127,7 @@ public class SessionWriter extends Configured implements Tool {
 	/*
 	 *  Mapper class to define reduce() function. Combine all the session objects and merge them in one.
 	 */
-	public static class ReduceClass extends Reducer<Text, AvroValue<Session>, Text, AvroValue<Session>> {
+	public static class ReduceClass extends Reducer<Text, AvroValue<Session>, AvroKey<CharSequence>, AvroValue<Session>> {
 		
 		private static final String REDUCER_COUNTER_GROUP = "Reducer Counts";
 		
@@ -150,10 +151,10 @@ public class SessionWriter extends Configured implements Tool {
 	        });
 			sessionBuilder.setEvents(events);
 			// Output only where number of events are only 50.
-			if (events.size() != 50) {
-				return;
-			}
-			context.write(key, new AvroValue(sessionBuilder.build()));
+			//if (events.size() != 50) {
+			//	return;
+			//}
+			context.write(new AvroKey(key.toString()), new AvroValue(sessionBuilder.build()));
 			
 			context.getCounter(REDUCER_COUNTER_GROUP, "OutPut Lines").increment(1L);
 		}
@@ -185,9 +186,10 @@ public class SessionWriter extends Configured implements Tool {
 		AvroJob.setMapOutputValueSchema(job, Session.getClassSchema());
 
 		// Specify the Reduce
-		job.setOutputFormatClass(TextOutputFormat.class);
+		job.setOutputFormatClass(AvroKeyValueOutputFormat.class);
 		job.setReducerClass(ReduceClass.class);
-		job.setOutputKeyClass(Text.class);
+		//job.setOutputKeyClass(Text.class);
+		AvroJob.setOutputKeySchema(job, Schema.create(Schema.Type.STRING));
 		AvroJob.setOutputValueSchema(job, Session.getClassSchema());
 
 		// Grab the input file and output directory from the command line.

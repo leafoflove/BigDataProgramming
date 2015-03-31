@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://localhost:8000/projects/1/origin_data/2/upload/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>PEP Project Page</title>
+        
+        
+        <link rel="shortcut icon" type="image/ico" href="http://localhost:8000/static/images/portal_ico.jpg">
+        
+        <!-- JavaScripts. It should be fine to put here as browsers are smart enough to cache. -->
+        <script src="./a1`Q?_files/jquery-1.9.1.js"></script>
+        <script src="./a1`Q?_files/jquery-ui-1.10.3.custom.js"></script>
+        <script src="./a1`Q?_files/bootstrap.js"></script>
+        <!-- <script src="/static/js/bootstrap/bootstrap-filestyle.min.js"></script>-->
+        <script src="./a1`Q?_files/bootstrap-datepicker.js"></script>
+        <script src="./a1`Q?_files/typeahead.jquery.min.js"></script>
+        <script src="./a1`Q?_files/bootstrap-editable.js"></script>
+        <script src="./a1`Q?_files/projectBase.js"></script>
+         
+     
+        <!-- CSS files -->
+        <link href="http://localhost:8000/static/styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/static/styles/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+        <link href="http://localhost:8000/static/styles/tree.css" rel="stylesheet">
+        <link href="http://localhost:8000/static/styles/datepicker.css" rel="stylesheet">
+        <link href="http://localhost:8000/static/css/bootstrap-editable.css" rel="stylesheet">
+	    <link href="http://localhost:8000/static/css/jquery.fileupload-ui.css" rel="stylesheet">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="http://localhost:8000/static/css/style.css">
+    <!-- blueimp Gallery styles -->
+    <link rel="stylesheet" href="http://localhost:8000/static/css/blueimp-gallery.min.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="http://localhost:8000/static/css/jquery.fileupload-ui.css">
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript>&lt;link rel="stylesheet" href="/static/css/jquery.fileupload-ui-noscript.css"&gt;</noscript>
+
+        
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+          }
+          .sidebar-nav {
+            padding: 9px 0;
+          }
+    
+          @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+              float: none;
+              padding-left: 5px;
+              padding-right: 5px;
+            }
+          }
+          
+        </style>
+	<style type="text/css"></style></head>
+	
+	<body>
+		<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="http://localhost:8000/">PEP</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="http://localhost:8000/">Home</a></li>
+                
+                    <li><a href="http://localhost:8000/projects/">My Projects</a></li>
+                
+                <li><a href="http://localhost:8000/search/">Browse Projects</a></li>
+                <li><a href="http://localhost:8000/features">Features</a></li>
+                <li><a href="http://localhost:8000/help">Help</a></li>
+                <li><a href="http://localhost:8000/contact">Contact</a></li>
+            </ul>
+
+            
+                <p class="navbar-form pull-right" style="color:#fff">Welcome, Gaurav
+                    <a href="http://localhost:8000/accounts/logout/" class="btn btn-danger">Logout</a></p>
+            
+
+        </div><!-- /.nav-header -->
+    </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+		
+		<div class="container">
+      		<div class="row row-offcanvas row-offcanvas-right">
+      		
+      			<div class="col-xs-6 col-md-3">           
+		            <div class="row tree well" id="samplesTree">
+		            	<ul id="samples_list">        
+        	                <li style="horizontal-align: middle">
+        	                		<img id="cover_pic" src="./a1`Q?_files/slice001_1.jpg" class="img-responsive" width="100%" height="100%/">
+        	                		
+        	                			<span class="btn btn-sm btn-primary fileinput-button" style="horizontal-align: middle">
+	                    					<i class="glyphicon glyphicon-edit"></i>
+	                    					<span id="edit_cover_span" style="border:none">Edit Cover</span>
+	                    					<input type="file" id="edit_cover_file" name="file" accept="image/*">
+	                					</span>
+        	                		
+        	                </li>
+        	                
+        	                <h3><a href="http://localhost:8000/projects/1/"><u>First project</u></a></h3>
+        	                
+        	                 <li>
+        	                 	 
+        	                     <span><font color="black">Sample - Unknown*</font></span> 
+        	                     
+        	                     <ul>
+        	                      
+        	                          
+        	                              
+        	                              <li>
+            	                          <span><a href="http://localhost:8000/projects/1/origin_data/1/"><u><font color="grey">Originating Data - One Data</font></u></a></span>
+        	                      		  </li>
+        	                              
+        	                              <li>
+            	                          <span><a href="http://localhost:8000/projects/1/origin_data/2/"><u><font color="grey">Originating Data - Two Wala</font></u></a></span>
+        	                      		  </li>
+        	                              
+        	                              <li>
+            	                          <span><a href="http://localhost:8000/projects/1/origin_data/3/"><u><font color="grey">Originating Data - Third</font></u></a></span>
+        	                      		  </li>
+        	                              
+        	                              <li>
+            	                          <span><a href="http://localhost:8000/projects/1/origin_data/4/"><u><font color="grey">Originating Data - yeh kya baat</font></u></a></span>
+        	                      		  </li>
+        	                              
+        	                          
+        	                      
+        	                          
+        	                              
+        	                              <li>
+                                          <span><a href="http://localhost:8000/projects/1/analysis_data/1/"><u><font color="grey">Analysis - AnaOne</font></u></a></span>
+                                          </li>
+                                          
+        	                          
+        	                      
+        	                     </ul>
+        	                 </li>
+        	                
+                        </ul>
+		            </div> <!-- samplesTree -->
+		        </div> <!-- col-xs-6 col-md-3 -->    
+		        
+		        <div class="col-xs-6 col-md-9" id="RightSide">
+					
+		            
+<legend>
+	Upload - Two Wala
+	<a href="http://localhost:8000/projects/1/origin_data/2/" class="btn btn-primary" style="float:right;">Back To Summary</a>
+</legend>
+<div>
+    <!-- The file upload form used as target for the file upload widget -->
+    <div class="tab-content">
+          
+	  <div class="tab-pane active well" id="standardImage">
+	   <!--  This is the holder for the form required for uploading files using blueImp. -->
+	    <form id="fileupload" method="post" action="./a1`Q?_files/a1`Q?.html" enctype="multipart/form-data" class=""><input type="hidden" name="csrfmiddlewaretoken" value="0A0TCV0MYTew4nV8mFPUCr1FMemXCePv">
+	        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+	        <div class="row fileupload-buttonbar">
+	            <div class="col-lg-12	">
+	                <!-- The fileinput-button span is used to style the file input field as button -->
+	                <span class="btn btn-success fileinput-button ">
+	                    <i class="glyphicon glyphicon-plus"></i>
+	                    <span>Add files...</span>
+	                    <input type="file" name="file" multiple="">
+	                </span>
+	                <button type="submit" class="btn btn-primary start ">
+	                    <i class="glyphicon glyphicon-upload"></i>
+	                    <span>Start upload</span>
+	                </button>
+	                <button type="reset" class="btn btn-warning cancel ">
+	                    <i class="glyphicon glyphicon-ban-circle"></i>
+	                    <span>Cancel upload</span>
+	                </button>
+	                <button type="button" class="btn btn-danger delete ">
+	                    <i class="glyphicon glyphicon-trash"></i>
+	                    <span>Delete</span>
+	                </button>
+	                <button type="button" class="btn btn-primary download">
+                        <i class="glyphicon glyphicon-download"></i>
+                        <span>Download</span>
+                    </button>
+                    <label class="btn btn-primary">
+                       <input type="checkbox" class="toggle"> Select All
+                   </label>
+            
+                    <!-- The loading indicator is shown during file processing -->
+                    <span class="fileupload-loading"></span>
+	            </div>
+	        </div>
+			
+			<div class="row">
+		        <!-- The global progress information -->
+	        	<div class="col-lg-4 fileupload-progress fade">
+	        	<!-- The global progress bar -->
+	            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+	           		<div class="progress-bar progress-bar-success" style="width:0%;"></div>
+	            </div>
+	            <!-- The extended global progress information -->
+	            <div class="progress-extended">&nbsp;</div>
+	        	</div>			
+			</div>
+
+	            
+	        <!-- The table listing the files available for upload/download -->
+	        <table role="presentation" class="table table-striped"><tbody class="files"><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice083_1.jpg" title="slice083_1.jpg" download="slice083_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice083_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice083_1.jpg" title="slice083_1.jpg" download="slice083_1.jpg" data-gallery="">slice083_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.27 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/148">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice082_1.jpg" title="slice082_1.jpg" download="slice082_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice082_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice082_1.jpg" title="slice082_1.jpg" download="slice082_1.jpg" data-gallery="">slice082_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.39 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/149">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice081_1.jpg" title="slice081_1.jpg" download="slice081_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice081_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice081_1.jpg" title="slice081_1.jpg" download="slice081_1.jpg" data-gallery="">slice081_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.37 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/150">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice080_1.jpg" title="slice080_1.jpg" download="slice080_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice080_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice080_1.jpg" title="slice080_1.jpg" download="slice080_1.jpg" data-gallery="">slice080_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.58 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/151">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice078_1.jpg" title="slice078_1.jpg" download="slice078_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice078_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice078_1.jpg" title="slice078_1.jpg" download="slice078_1.jpg" data-gallery="">slice078_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.72 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/152">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice079_1.jpg" title="slice079_1.jpg" download="slice079_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice079_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice079_1.jpg" title="slice079_1.jpg" download="slice079_1.jpg" data-gallery="">slice079_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.67 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/153">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice077_1.jpg" title="slice077_1.jpg" download="slice077_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice077_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice077_1.jpg" title="slice077_1.jpg" download="slice077_1.jpg" data-gallery="">slice077_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.60 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/154">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice076_1.jpg" title="slice076_1.jpg" download="slice076_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice076_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice076_1.jpg" title="slice076_1.jpg" download="slice076_1.jpg" data-gallery="">slice076_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.53 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/155">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice075_1.jpg" title="slice075_1.jpg" download="slice075_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice075_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice075_1.jpg" title="slice075_1.jpg" download="slice075_1.jpg" data-gallery="">slice075_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.35 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/156">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice074_1.jpg" title="slice074_1.jpg" download="slice074_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice074_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice074_1.jpg" title="slice074_1.jpg" download="slice074_1.jpg" data-gallery="">slice074_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.27 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/157">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice073_1.jpg" title="slice073_1.jpg" download="slice073_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice073_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice073_1.jpg" title="slice073_1.jpg" download="slice073_1.jpg" data-gallery="">slice073_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.32 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/158">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice134_1.jpg" title="slice134_1.jpg" download="slice134_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice134_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice134_1.jpg" title="slice134_1.jpg" download="slice134_1.jpg" data-gallery="">slice134_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.66 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/159">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice136_1.jpg" title="slice136_1.jpg" download="slice136_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice136_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice136_1.jpg" title="slice136_1.jpg" download="slice136_1.jpg" data-gallery="">slice136_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">11.70 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/160">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr><tr class="template-download fade in">
+        <td>
+            <span class="preview">
+                
+                    
+                        <a href="./a1`Q?_files/slice135_1.jpg" title="slice135_1.jpg" download="slice135_1.jpg" data-gallery=""><img src="./a1`Q?_files/slice135_1.jpg"></a>
+                                
+                
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="./a1`Q?_files/slice135_1.jpg" title="slice135_1.jpg" download="slice135_1.jpg" data-gallery="">slice135_1.jpg</a>
+            </p>
+            
+        </td>
+        <td>
+            <span class="size">12.59 KB</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="DELETE" data-url="/projects/delete/161">           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr></tbody></table>
+	    </form>
+	    
+	        <br>
+		    <div class="panel panel-default">
+		        <div class="panel-heading">
+		            <h3 class="panel-title">Notes</h3>
+		        </div>
+		        <div class="panel-body">
+		            <ul>
+		                <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage.</li>
+		                <li>Preview of images greater than 5MB is not available.</li>
+		            </ul>
+		            Supported Browsers
+		                <ul>
+		                 <li>Google Chrome</li>
+		                 <li>Apple Safari 4.0+</li>
+		                 <li>Mozilla Firefox 3.0+</li>
+		                 <li>Opera 11.0+</li>
+		                 <li>Microsoft Internet Explorer 6.0+</li>
+		               </ul>
+		        </div>
+		    </div>
+</div>
+</div>
+
+<!-- The blueimp Gallery widget -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev"></a>
+    <a class="next"></a>
+    <a class="close"></a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            {% if (file.error) { %}
+                <div><span class="label label-important">{%=locale.fileupload.error%}</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <p class="size">{%=o.formatFileSize(file.size)%}</p>
+            {% if (!o.files.error) { %}
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+            {% } %}
+        </td>
+        <td>
+            {% if (!o.files.error && !i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>{%=locale.fileupload.cancel%}</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>    
+
+    {% if (file.nonStandardFileType) { %}
+    
+    <tr>
+        <td colspan="4">
+          <label class="col-md-4 control-label" for="imageType">Image Type: </label>
+          <div class="col-md-4">
+            <select id="imageTypeNames" name="imageTypeNames" class="form-control">
+              <option value="8-bit">8-bit</option>
+              <option value="16-bit-Signed">16-bit-Signed</option>
+              <option value="16-bit-Signed">16-bit-UnSigned</option>
+              <option value="32-bit-Signed">32-bit-Signed</option>
+              <option value="32-bit-Signed">32-bit-UnSigned</option>
+              <option value="32-Real">32-Real</option>
+              <option value="64-Real">64-Real</option>
+              <option value="24-bit RGB">24-bit RGB</option>
+              <option value="24-bit RGB Planar">24-bit RGB Planar</option>
+              <option value="24-bit BGR">24-bit BGR</option>
+              <option value="24-bit Integer">24-bit Integer</option>
+              <option value="32-bit ARGB">32-bit ARGB</option>
+              <option value="32-bit ABGR">32-bit AGBR</option>
+              <option value="1-bit bitmap">1-bit bitmap</option>
+            </select>
+          </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="width">Width (Number of voxels in x-direction):</label>  
+            <div class="col-md-4">
+               <input id="width" name="width" type="number" placeholder="Width: " class="form-control input-md" data-required="true" required>
+            </div>
+        </td>
+    </tr>
+    
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="height">Height (Number of voxels in y-direction):</label>  
+            <div class="col-md-4">
+               <input id="height" name="height" type="number" placeholder="Height: " class="form-control input-md" data-required="true" required>
+            </div>
+        </td>
+    </tr>
+                    
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="offsetToFirstImage">Offset to first Image:</label>  
+            <div class="col-md-4">
+               <input id="offsetToFirstImage" name="offsetToFirstImage" type="number" placeholder="0" class="form-control input-md" data-required="true" required>
+            </div>
+        </tid>
+    </tr>  
+        
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="numberofImages">Number of images (in z-direction):</label>  
+            <div class="col-md-4">
+               <input id="numberofImages" name="numberofImages" type="number" placeholder="count" class="form-control input-md" data-required="true" required>
+            </div>
+        </td>
+    </tr>  
+
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="gapBetweenImages">Gap between images:</label>  
+            <div class="col-md-4">
+               <input id="gapBetweenImages" name="gapBetweenImages" type="number" placeholder="0" class="form-control input-md" data-required="true" required>
+            </div>
+        </td>
+    </tr>        
+
+    <tr>
+        <td colspan="4">
+            <label class="col-md-4 control-label" for="byteOrder">Byte Order: </label>
+          <div class="col-md-4">
+            <select id="byteOrder" name="byteOrder" class="form-control">
+              <option value="littleEndian">Little Endian</option>
+              <option value="bigEndian">Big Endian</option>
+            </select>
+          </div>
+        </td>
+    </tr> 
+
+    {% } %}
+    
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    {% if (file.size > 2097152) { %}
+                        <a href="{%=file.thumbnailUrl%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                    {% } else { %}
+                        <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                    {% } %}            
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-important">{%=locale.fileupload.error%}</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td >
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            <label class="selectedFiles btn btn-primary" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>           
+                <input type="checkbox" name="selectedFiles" value="1" class="toggle"> Select
+            </label>   
+        </td>
+    </tr>
+{% } %}
+
+</script>
+
+
+<script src="./a1`Q?_files/bootbox.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="./a1`Q?_files/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="./a1`Q?_files/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="./a1`Q?_files/load-image.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="./a1`Q?_files/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="./a1`Q?_files/bootstrap.min.js"></script>
+<!-- blueimp Gallery script -->
+<script src="./a1`Q?_files/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="./a1`Q?_files/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="./a1`Q?_files/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="./a1`Q?_files/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<script src="./a1`Q?_files/main.js"></script>
+<script src="./a1`Q?_files/locale.js"></script>
+<script src="./a1`Q?_files/csrf.js"></script>
+<!--[endif]---->
+
+
+
+
+		        </div> <!-- Right Side -->
+     		</div> <!-- row row-offcanvas row-offcanvas-right --> 
+     	</div> <!-- container -->
+     	
+     	<div class="container">
+      	<hr>
+		<footer class="site-footer">
+    
+    
+    <style>
+    
+    partners {
+        margin-bottom: 1em;
+    }
+
+    .partners a {
+        display:    inline-block;
+        vertical-align: middle;
+        margin:0 1em;
+    }
+
+    </style>
+    
+    <div class="text-center">
+        <div class="partners">
+            <a href="https://www.tacc.utexas.edu/" target="_blank">
+                <img height="40" width="160" src="./a1`Q?_files/tacc.png">
+            </a>
+            <a href="http://www.cpge.utexas.edu/" target="_blank">
+                <img height="50" src="./a1`Q?_files/cpge_logo.jpg">
+            </a>
+            <a href="http://www.nsf.gov/" target="_blank">
+                <img height="70" src="./a1`Q?_files/nsf1.jpg">
+            </a>
+        </div>
+    </div>
+    <p>
+        <i>Supported by</i>:
+        National Science Foundation, NSF EAR CAREER grant "Advanced interface methods in heterogeneous porous materials: a multi-disciplinary and multi-scale framework".
+    </p>
+</footer>
+ 
+    	</div>
+	 
+ 
+ 
+</div><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ console.error('LastPass: Skipping form because submit is not a function!');continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i; } else { d.textContent=i; } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>
