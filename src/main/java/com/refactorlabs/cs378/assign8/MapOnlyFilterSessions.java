@@ -20,6 +20,7 @@ import org.apache.avro.mapred.Pair;
 import org.apache.avro.mapreduce.AvroJob;
 import org.apache.avro.mapreduce.AvroKeyValueInputFormat;
 import org.apache.avro.mapreduce.AvroKeyValueOutputFormat;
+import org.apache.avro.mapreduce.AvroMultipleOutputs;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -42,7 +43,12 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 
+import com.refactorlabs.cs378.assign7.MultipleInputLeftJoin;
 import com.refactorlabs.cs378.assign7.VinImpressionCounts;
+import com.refactorlabs.cs378.assign7.MultipleInputLeftJoin.CombinerClass;
+import com.refactorlabs.cs378.assign7.MultipleInputLeftJoin.ReduceClass;
+import com.refactorlabs.cs378.assign7.MultipleInputLeftJoin.SessionFileMapper;
+import com.refactorlabs.cs378.assign7.MultipleInputLeftJoin.VinVDPMapper;
 import com.refactorlabs.cs378.sessions.*;
 
 /**
@@ -60,13 +66,25 @@ public class MapOnlyFilterSessions extends Configured implements Tool {
 	 *  and then doing the session category counting.
 	 */
 	public static class MapClass 
-		extends Mapper<AvroKey<CharSequence>, AvroValue<Session>, Text, AvroValue<VinImpressionCounts>> {
+		extends Mapper<AvroKey<CharSequence>, AvroValue<Session>, AvroKey<CharSequence>, AvroValue<Session>> {
 	
 		// Text word object which is re-used.
 		private Text word = new Text();
 		
+		// Mapper to multiple output.
+		private AvroMultipleOutputs multipleOutputs;
+		
 		// Mapper session counter.
 		private static final String SESSION_CATEGORY_GROUP = "Session Category Counts";
+		
+		public void setup(Context context) {
+			multipleOutputs = new AvroMultipleOutputs(context); 
+		}
+		
+		public void cleanup(Context context)
+				 throws InterruptedException, IOException{
+				 multipleOutputs.close();
+		} 
 		
 		@Override
 		public void map(AvroKey<CharSequence> key, AvroValue<Session> value, Context context)
@@ -116,16 +134,22 @@ public class MapOnlyFilterSessions extends Configured implements Tool {
 			}
 			
 			if (is_submitter) {
+				multipleOutputs.write("Submitter", key,	value, "Submitter"); 
 				context.getCounter(SESSION_CATEGORY_GROUP, "Submitter").increment(1L);
 			} else if (is_sharer) {
+				multipleOutputs.write("Sharer", key, value, "Sharer"); 
 				context.getCounter(SESSION_CATEGORY_GROUP, "Sharer").increment(1L);
 			} else if (is_clicker) {
+				multipleOutputs.write("Clicker", key,	value, "Clicker"); 
 				context.getCounter(SESSION_CATEGORY_GROUP, "Clicker").increment(1L);
 			} else if (is_shower) {
+				multipleOutputs.write("Shower", key,	value, "Shower"); 
 				context.getCounter(SESSION_CATEGORY_GROUP, "Shower").increment(1L);
 			} else if (is_only_visitor) {
-				context.getCounter(SESSION_CATEGORY_GROUP, "OnlyVisitor").increment(1L);
+				multipleOutputs.write("Visitor", key,	value, "Visitor"); 
+				context.getCounter(SESSION_CATEGORY_GROUP, "Visitor").increment(1L);
 			} else {
+				multipleOutputs.write("Other", key,	value, "Other"); 
 				context.getCounter(SESSION_CATEGORY_GROUP, "Other").increment(1L);
 			}
 		}
@@ -133,9 +157,81 @@ public class MapOnlyFilterSessions extends Configured implements Tool {
 	
 	
 	@Override
-	public int run(String[] arg0) throws Exception {
-		// TODO Auto-generated method stub
+	public int run(String[] args) throws Exception {
+		if (args.length != 2) {
+			System.err.println("Usage: MapOnlyFilterSessions <input path1> <output path>");
+			return -1;
+		}
+
+		Configuration conf = getConf();
+		Job job = new Job(conf, "MapOnlyFilterSession");
+		String[] appArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
+
+		// Identify the JAR file to replicate to all machines.
+		job.setJarByClass(MapOnlyFilterSessions.class);
+		// Use this JAR first in the classpath (We also set a bootstrap script in AWS)
+		conf.set("mapreduce.user.classpath.first", "true");
+
+		// Mapper.
+		job.setInputFormatClass(AvroKeyValueInputFormat.class);
+		job.setMapperClass(MapClass.class);
+		AvroJob.setMapOutputKeySchema(job, Schema.create(Schema.Type.STRING));
+		AvroJob.setMapOutputValueSchema(job, Session.getClassSchema());
+		
+		// Specify input key schema for avro input type.
+		AvroJob.setInputKeySchema(job, Schema.create(Schema.Type.STRING));
+		AvroJob.setInputValueSchema(job, Session.getClassSchema());
+		
+		// Specify output key schema for avro output type.
+		AvroJob.setOutputKeySchema(job, Schema.create(Schema.Type.STRING));
+		AvroJob.setOutputValueSchema(job, Session.getClassSchema());
+
+		// Set avro multiple output related setting.
+		AvroMultipleOutputs.addNamedOutput(job, "Submitter", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		AvroMultipleOutputs.addNamedOutput(job, "Sharer", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		AvroMultipleOutputs.addNamedOutput(job, "Clicker", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		AvroMultipleOutputs.addNamedOutput(job, "Shower", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		AvroMultipleOutputs.addNamedOutput(job, "Visitor", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		AvroMultipleOutputs.addNamedOutput(job, "Other", AvroKeyValueOutputFormat.class, 
+				Schema.create(Schema.Type.STRING), Session.getClassSchema());
+		
+		job.setOutputFormatClass(AvroKeyValueOutputFormat.class);
+		// Grab the input file and output directory from the command line.
+		String[] inputPaths = appArgs[0].split(",");
+		for ( String inputPath : inputPaths ) {
+			FileInputFormat.addInputPath(job, new Path(inputPath));
+		}
+		FileOutputFormat.setOutputPath(job, new Path(appArgs[1]));
+
+		// Initiate the map-reduce job, and wait for completion.
+		job.waitForCompletion(true);
+
 		return 0;
 	}
 
+	private static void printClassPath() {
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+		URL[] urls = ((URLClassLoader) cl).getURLs();
+		System.out.println("classpath BEGIN");
+		for (URL url : urls) {
+			System.out.println(url.getFile());
+		}
+		System.out.println("classpath END");
+	}
+
+	/**
+	 * The main method specifies the characteristics of the map-reduce job
+	 * by setting values on the Job object, and then initiates the map-reduce
+	 * job and waits for it to complete.
+	 */
+	public static void main(String[] args) throws Exception {
+		printClassPath();
+		int res = ToolRunner.run(new Configuration(), new MapOnlyFilterSessions(), args);
+		System.exit(res);
+	}
 }

@@ -7,7 +7,6 @@
     <groupId>com.refactorlabs.cs378</groupId>
     <artifactId>bdp</artifactId>
     <packaging>jar</packaging>
-    <version>0.6</version>
 
     <description>Java code for CS 378 - Big Data Programming</description>
 
@@ -155,4 +154,5 @@
       </plugins>
     </build>
 
+    <version>0.9</version>
 </project>
